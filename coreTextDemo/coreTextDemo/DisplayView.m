@@ -28,45 +28,37 @@
     // Drawing code
 }
 */
--(instancetype)initWithCoder:(NSCoder *)aDecoder{
-    if (self=[super initWithCoder:aDecoder]) {
-        [self setupAction];
-    }
-    return self;
-}
--(instancetype)init{
-    if (self=[super init]) {
-        [self setupAction];
-    }
-    return self;
-}
--(instancetype)initWithFrame:(CGRect)frame{
-    if (self=[super initWithFrame:frame]) {
-        [self setupAction];
-    }
-    return self;
-}
--(void)setupAction{
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(gesureAC:)];
-    self.userInteractionEnabled = YES;
-    
-    [self addGestureRecognizer:tap];
-}
--(void)gesureAC:(UIGestureRecognizer *)recognizer{
-    for (NSString *rect in self.imageInfos) {
-        CGPoint touchPoint = [recognizer locationInView:self];
-        CGRect imageRect = CGRectFromString(rect);
-        CGFloat x = imageRect.origin.x;
-        CGFloat y = self.bounds.size.height - imageRect.origin.y-imageRect.size.height;
-        CGRect resultRect = CGRectMake(x, y, imageRect.size.width, imageRect.size.height);
-        if (CGRectContainsPoint(resultRect, touchPoint)) {
-            NSLog(@"dsdsdsdssds--->");
-        }
-    }
-}
 
--(void)drawRect:(CGRect)rect{
-    [super drawRect:rect];
+//-(instancetype)initWithFrame:(CGRect)frame{
+//    if (self=[super initWithFrame:frame]) {
+////        [self setupAction];
+//    }
+//    return self;
+//}
+
+//-(void)setupAction{
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(gesureAC:)];
+//    self.userInteractionEnabled = YES;
+//    
+//    [self addGestureRecognizer:tap];
+//}
+//-(void)gesureAC:(UIGestureRecognizer *)recognizer{
+//    for (NSString *rect in self.imageInfos) {
+//        CGPoint touchPoint = [recognizer locationInView:self];
+//        CGRect imageRect = CGRectFromString(rect);
+//        CGFloat x = imageRect.origin.x;
+//        CGFloat y = self.bounds.size.height - imageRect.origin.y-imageRect.size.height;
+//        CGRect resultRect = CGRectMake(x, y, imageRect.size.width, imageRect.size.height);
+//        if (CGRectContainsPoint(resultRect, touchPoint)) {
+//            NSLog(@"dsdsdsdssds--->");
+//        }
+//    }
+//}
+
+
+//-(void)drawRect:(CGRect)rect{
+//    [super drawRect:rect];
+    /*
     //上下文环境
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSaveGState(context);
@@ -81,6 +73,7 @@
     int imageCount = 0;
     CTFrameDraw(frame, context);//文本
     CFRelease(frame);
+     */
     /*
     NSArray *ctLines = (NSArray *)CTFrameGetLines(frame);
     int linesCount = (int)[ctLines count];
@@ -240,7 +233,9 @@
      */
     
     
-}
+//}
+
+/*
 -(CGRect)getLineBounds:(CTLineRef)line point:(CGPoint)point{
     CGFloat ascent = 0.0f;
     CGFloat descent = 0.0f;
@@ -249,6 +244,7 @@
     CGFloat height = ascent + descent;
     return CGRectMake(point.x, point.y, width, height);
 }
+ */
 -(NSMutableArray *)imageInfos{
     if (!_imageInfos) {
         _imageInfos = [NSMutableArray array];

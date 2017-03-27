@@ -11,6 +11,6 @@
 #import "CoreTextData.h"
 @interface DisplayView : UIView
 
-@property(nonatomic,strong)CoreTextData *coreTextData;
+//@property(nonatomic,strong)CoreTextData *coreTextData;
 
 @end
